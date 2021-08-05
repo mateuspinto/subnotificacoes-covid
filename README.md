@@ -9,8 +9,8 @@
  - Milena Nobres (ER05164 - Rio Paranaíba)
 
 **Dados utilizados**:
-https://opendatasus.saude.gov.br/dataset/bd-srag-2009-a-2012
-https://opendatasus.saude.gov.br/dataset/bd-srag-2012-a-2018
-https://opendatasus.saude.gov.br/dataset/bd-srag-2019
-https://opendatasus.saude.gov.br/dataset/bd-srag-2020
-https://opendatasus.saude.gov.br/dataset/bd-srag-2021
+ - https://opendatasus.saude.gov.br/dataset/bd-srag-2009-a-2012
+ - https://opendatasus.saude.gov.br/dataset/bd-srag-2012-a-2018
+ - https://opendatasus.saude.gov.br/dataset/bd-srag-2019
+ - https://opendatasus.saude.gov.br/dataset/bd-srag-2020
+ - https://opendatasus.saude.gov.br/dataset/bd-srag-2021

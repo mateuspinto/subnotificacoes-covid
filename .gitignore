@@ -8,3 +8,8 @@
 # Pip envs
 venv/*
 venv
+
+# Numba cache
+*/__pycache__/*
+*__pycache__
+*.pyc

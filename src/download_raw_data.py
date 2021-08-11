@@ -4,8 +4,9 @@
 # Download required data using wget
 
 from os import system
+from common.path import *
 
-wget = 'wget -P ../data/raw -nc '
+wget = f'wget -P {RAW_DATA_DIR} -nc '
 files = [
     'https://opendatasus.saude.gov.br/dataset/c9a8f286-44bc-444e-94b4-f4ceded3af2c/resource/06a7abd3-412f-47e7-a289-b38f67e9425b/download/influd09_limpo-final.csv',
     'https://opendatasus.saude.gov.br/dataset/c9a8f286-44bc-444e-94b4-f4ceded3af2c/resource/0e9fd20f-dfc1-44e0-8f6e-5bc324c567e6/download/influd10_limpo-final.csv',

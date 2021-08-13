@@ -4,6 +4,7 @@
 
 # Stored data
 *.csv
+*.parquet
 
 # Pip envs
 venv/*

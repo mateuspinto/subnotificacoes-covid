@@ -65,45 +65,49 @@ def filter_dates(source_column):
     return pd.to_datetime(source_column, errors='coerce')
 
 
-def new_blank_dataframe(lenght):
+def new_blank_dataframe(length):
     df = pd.DataFrame()
 
-    df['cad_dt_nascimento'] = np.full(lenght, np.datetime64(
+    df['cad_dt_nascimento'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['cad_dt_notificacao'] = np.full(lenght, np.datetime64(
+    df['cad_dt_notificacao'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['cad_cod_cidade'] = np.full(lenght, 0, int)
-    df['cad_sexo'] = np.full(lenght, np.nan, float)
+    df['cad_cod_cidade'] = np.full(length, 0, int)
+    df['cad_sexo'] = np.full(length, np.nan, float)
 
-    df['fr_asma'] = np.full(lenght, np.nan, float)
-    df['fr_cardiopatia'] = np.full(lenght, np.nan, float)
-    df['fr_diabetes'] = np.full(lenght, np.nan, float)
-    df['fr_doenca_renal'] = np.full(lenght, np.nan, float)
-    df['fr_hematologia'] = np.full(lenght, np.nan, float)
-    df['fr_hepatia'] = np.full(lenght, np.nan, float)
-    df['fr_imunodepressao'] = np.full(lenght, np.nan, float)
-    df['fr_neuropatia'] = np.full(lenght, np.nan, float)
-    df['fr_obesidade'] = np.full(lenght, np.nan, float)
-    df['fr_pneumopatia'] = np.full(lenght, np.nan, float)
-    df['fr_puerpera'] = np.full(lenght, np.nan, float)
-    df['fr_snd_down'] = np.full(lenght, np.nan, float)
+    df['fr_asma'] = np.full(length, np.nan, float)
+    df['fr_cardiopatia'] = np.full(length, np.nan, float)
+    df['fr_diabetes'] = np.full(length, np.nan, float)
+    df['fr_doenca_renal'] = np.full(length, np.nan, float)
+    df['fr_hematologia'] = np.full(length, np.nan, float)
+    df['fr_hepatia'] = np.full(length, np.nan, float)
+    df['fr_imunodepressao'] = np.full(length, np.nan, float)
+    df['fr_neuropatia'] = np.full(length, np.nan, float)
+    df['fr_obesidade'] = np.full(length, np.nan, float)
+    df['fr_pneumopatia'] = np.full(length, np.nan, float)
+    df['fr_puerpera'] = np.full(length, np.nan, float)
+    df['fr_snd_down'] = np.full(length, np.nan, float)
 
-    df['sint_dfc_respiratorio'] = np.full(lenght, np.nan, float)
-    df['sint_diarreia'] = np.full(lenght, np.nan, float)
-    df['sint_dispneia'] = np.full(lenght, np.nan, float)
-    df['sint_dor_abdominal'] = np.full(lenght, np.nan, float)
-    df['sint_dor_garganta'] = np.full(lenght, np.nan, float)
-    df['sint_fadiga'] = np.full(lenght, np.nan, float)
-    df['sint_febre'] = np.full(lenght, np.nan, float)
-    df['sint_prd_olfato'] = np.full(lenght, np.nan, float)
-    df['sint_prd_paladar'] = np.full(lenght, np.nan, float)
-    df['sint_saturacao'] = np.full(lenght, np.nan, float)
-    df['sint_tosse'] = np.full(lenght, np.nan, float)
-    df['sint_vomito'] = np.full(lenght, np.nan, float)
+    df['sint_dfc_respiratorio'] = np.full(length, np.nan, float)
+    df['sint_diarreia'] = np.full(length, np.nan, float)
+    df['sint_dispneia'] = np.full(length, np.nan, float)
+    df['sint_dor_abdominal'] = np.full(length, np.nan, float)
+    df['sint_dor_garganta'] = np.full(length, np.nan, float)
+    df['sint_fadiga'] = np.full(length, np.nan, float)
+    df['sint_febre'] = np.full(length, np.nan, float)
+    df['sint_prd_olfato'] = np.full(length, np.nan, float)
+    df['sint_prd_paladar'] = np.full(length, np.nan, float)
+    df['sint_saturacao'] = np.full(length, np.nan, float)
+    df['sint_tosse'] = np.full(length, np.nan, float)
+    df['sint_vomito'] = np.full(length, np.nan, float)
 
-    df['vac_covid'] = np.full(lenght, np.nan, float)
-    df['vac_dt_covid_1'] = np.full(lenght, np.datetime64(
+    df['vac_covid'] = np.full(length, np.nan, float)
+    df['vac_dt_covid_1'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['vac_dt_covid_2'] = np.full(lenght, np.datetime64(
+    df['vac_dt_covid_2'] = np.full(length, np.datetime64(
+        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
+
+    df['vac_gripe'] = np.full(length, np.nan, float)
+    df['vac_dt_gripe'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
     return df

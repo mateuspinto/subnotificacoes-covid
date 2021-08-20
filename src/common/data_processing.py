@@ -110,4 +110,8 @@ def new_blank_dataframe(length):
     df['vac_gripe'] = np.full(length, np.nan, float)
     df['vac_dt_gripe'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
+
+    df['evo_internacao'] = np.full(length, np.nan, float)
+    df['evo_uti'] = np.full(length, np.nan, float)
+    df['evo_obito'] = np.full(length, np.nan, float)
     return df

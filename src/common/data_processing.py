@@ -72,13 +72,15 @@ def new_blank_dataframe(length):
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
     df['cad_dt_notificacao'] = np.full(length, np.datetime64(
         'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['cad_cod_cidade'] = np.full(length, 0, int)
+
+    df['cad_cod_cidade'] = np.full(length, np.nan, float)
     df['cad_sexo'] = np.full(length, np.nan, float)
 
     df['fr_asma'] = np.full(length, np.nan, float)
     df['fr_cardiopatia'] = np.full(length, np.nan, float)
     df['fr_diabetes'] = np.full(length, np.nan, float)
     df['fr_doenca_renal'] = np.full(length, np.nan, float)
+    df['fr_gestante'] = np.full(length, np.nan, float)
     df['fr_hematologia'] = np.full(length, np.nan, float)
     df['fr_hepatia'] = np.full(length, np.nan, float)
     df['fr_imunodepressao'] = np.full(length, np.nan, float)
@@ -102,16 +104,13 @@ def new_blank_dataframe(length):
     df['sint_vomito'] = np.full(length, np.nan, float)
 
     df['vac_covid'] = np.full(length, np.nan, float)
-    df['vac_dt_covid_1'] = np.full(length, np.datetime64(
-        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['vac_dt_covid_2'] = np.full(length, np.datetime64(
-        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-
     df['vac_gripe'] = np.full(length, np.nan, float)
-    df['vac_dt_gripe'] = np.full(length, np.datetime64(
-        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
 
     df['evo_internacao'] = np.full(length, np.nan, float)
-    df['evo_uti'] = np.full(length, np.nan, float)
     df['evo_obito'] = np.full(length, np.nan, float)
+    df['evo_uti'] = np.full(length, np.nan, float)
+    df['evo_ventilacao'] = np.full(length, np.nan, float)
+    df['evo_ventilacao_invasiva'] = np.full(length, np.nan, float)
+
+    df['dg_covid'] = np.full(length, np.nan, float)
     return df

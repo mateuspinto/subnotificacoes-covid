@@ -2,6 +2,5 @@ autopep8
 pandas
 numpy
 numba
-missingno
 fastparquet
 ipykernel

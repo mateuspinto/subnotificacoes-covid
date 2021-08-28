@@ -5,7 +5,6 @@
 
 from common.path import *
 from common.data_processing import *
-import missingno as msno
 
 
 def process_y09_12(input_filename, output_filename):
@@ -54,9 +53,6 @@ def process_y09_12(input_filename, output_filename):
     n_way_column_map(processed.evo_ventilacao, raw.SUPORT_VEN, [1, 2], [1, 0])
 
     fill_column(processed.dg_covid, 0)
-
-    msno.matrix(processed.sample(250)).get_figure().savefig(
-        PROCESSED_DATA_DIR / (output_filename + '_msno.jpg'), bbox_inches='tight')
 
     processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
@@ -110,9 +106,6 @@ def process_y13_18(input_filename, output_filename):
                      raw.SUPORT_VEN, [1, 2, 3], [0, 1, 0])
 
     fill_column(processed.dg_covid, 0)
-
-    msno.matrix(processed.sample(250)).get_figure().savefig(
-        PROCESSED_DATA_DIR / (output_filename + '_msno.jpg'), bbox_inches='tight')
 
     processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
@@ -169,9 +162,6 @@ def process_y19(input_filename, output_filename):
                      raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     fill_column(processed.dg_covid, 0)
-
-    msno.matrix(processed.sample(250)).get_figure().savefig(
-        PROCESSED_DATA_DIR / (output_filename + '_msno.jpg'), bbox_inches='tight')
 
     processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
@@ -233,9 +223,6 @@ def process_y20(input_filename, output_filename):
 
     fill_column(processed.dg_covid, 0)
 
-    msno.matrix(processed.sample(250)).get_figure().savefig(
-        PROCESSED_DATA_DIR / (output_filename + '_msno.jpg'), bbox_inches='tight')
-
     processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
 
@@ -296,9 +283,6 @@ def process_y21(input_filename, output_filename):
 
     n_way_column_map(processed.dg_covid, raw.CLASSI_FIN,
                      [1, 2, 3, 4, 5], [0, 0, 0, 0, 1])
-
-    msno.matrix(processed.sample(250)).get_figure().savefig(
-        PROCESSED_DATA_DIR / (output_filename + '_msno.jpg'), bbox_inches='tight')
 
     processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 

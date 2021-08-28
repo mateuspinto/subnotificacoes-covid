@@ -5,7 +5,6 @@
 # Stored data
 *.csv
 *.parquet
-*.jpg
 
 # Pip envs
 venv/*

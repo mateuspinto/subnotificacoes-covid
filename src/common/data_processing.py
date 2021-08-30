@@ -62,7 +62,7 @@ def fill_column(target_column, default_value):
 
 
 def filter_dates(source_column):
-    return pd.to_datetime(source_column, errors='coerce')
+    return pd.to_datetime(source_column, errors='coerce', dayfirst=True)
 
 
 def new_blank_dataframe(length):
@@ -110,7 +110,6 @@ def new_blank_dataframe(length):
     df['evo_obito'] = np.full(length, np.nan, float)
     df['evo_uti'] = np.full(length, np.nan, float)
     df['evo_ventilacao'] = np.full(length, np.nan, float)
-    df['evo_ventilacao_invasiva'] = np.full(length, np.nan, float)
 
     df['dg_covid'] = np.full(length, np.nan, float)
     return df

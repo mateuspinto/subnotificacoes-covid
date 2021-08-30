@@ -101,8 +101,6 @@ def process_y13_18(input_filename):
     n_way_column_map(processed.evo_uti, raw.UTI, [1, 2], [1, 0])
     n_way_column_map(processed.evo_ventilacao,
                      raw.SUPORT_VEN, [1, 2, 3], [0, 1, 1])
-    n_way_column_map(processed.evo_ventilacao_invasiva,
-                     raw.SUPORT_VEN, [1, 2, 3], [0, 1, 0])
 
     fill_column(processed.dg_covid, 0)
     return processed
@@ -156,8 +154,6 @@ def process_y19(input_filename):
     n_way_column_map(processed.evo_uti, raw.UTI, [1, 2], [1, 0])
     n_way_column_map(processed.evo_ventilacao,
                      raw.SUPORT_VEN, [1, 2, 3], [1, 1, 0])
-    n_way_column_map(processed.evo_ventilacao_invasiva,
-                     raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     fill_column(processed.dg_covid, 0)
     return processed
@@ -215,8 +211,6 @@ def process_y20(input_filename):
     n_way_column_map(processed.evo_uti, raw.UTI, [1, 2], [1, 0])
     n_way_column_map(processed.evo_ventilacao,
                      raw.SUPORT_VEN, [1, 2, 3], [1, 1, 0])
-    n_way_column_map(processed.evo_ventilacao_invasiva,
-                     raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     fill_column(processed.dg_covid, 0)
     return processed
@@ -274,8 +268,6 @@ def process_y21(input_filename):
     n_way_column_map(processed.evo_uti, raw.UTI, [1, 2], [1, 0])
     n_way_column_map(processed.evo_ventilacao,
                      raw.SUPORT_VEN, [1, 2, 3], [1, 1, 0])
-    n_way_column_map(processed.evo_ventilacao_invasiva,
-                     raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     n_way_column_map(processed.dg_covid, raw.CLASSI_FIN,
                      [1, 2, 3, 4, 5], [0, 0, 0, 0, 1])
@@ -284,13 +276,13 @@ def process_y21(input_filename):
 
 PANDEMIC_DAY_ZERO = '2020-02-26'
 
-print('[1/7] Procesando dados de 2009 a 2012')
+print('[1/7] Processando dados de 2009 a 2012')
 y09 = process_y09_12('influd09_limpo-final')
 y10 = process_y09_12('influd10_limpo-final')
 y11 = process_y09_12('influd11_limpo_final')
 y12 = process_y09_12('influd12_limpo_final')
 
-print('[2/7] Procesando dados de 2013 a 2018')
+print('[2/7] Processando dados de 2013 a 2018')
 y13 = process_y13_18('influd13_limpo_final')
 y14 = process_y13_18('influd14_limpo-final')
 y15 = process_y13_18('influd15_limpo-final')
@@ -298,19 +290,22 @@ y16 = process_y13_18('influd16_limpo-final')
 y17 = process_y13_18('influd17_limpo-final')
 y18 = process_y13_18('influd18_limpo-final')
 
-print('[3/7] Procesando dados de 2019')
+print('[3/7] Processando dados de 2019')
 y19 = process_y19('influd19_limpo-27.04.2020-final')
 
-print('[4/7] Procesando dados de 2020')
+print('[4/7] Processando dados de 2020')
 y20 = process_y20('INFLUD-02-08-2021')
 
-print('[5/7] Procesando dados de 2021')
+print('[5/7] Processando dados de 2021')
 y21 = process_y21('INFLUD21-02-08-2021')
 
 print('[6/7] Salvando dados pré-pandemia')
-pd.concat([y09, y10, y11, y12, y13, y14, y15, y16, y17, y18, y19,
-          y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO]], ignore_index=True).to_parquet(PROCESSED_DATA_DIR / 'pre_pandemia.parquet')
+pre_pandemia = pd.concat(
+    [y09, y10, y11, y12, y13, y14, y15, y16, y17, y18, y19, y20], ignore_index=True)
+pre_pandemia[pre_pandemia.cad_dt_notificacao < PANDEMIC_DAY_ZERO].to_parquet(
+    PROCESSED_DATA_DIR / 'pre_pandemia.parquet', index=False)
 
-print('[7/7] Salvando dados pós-pandemia')
-pd.concat([y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO], y21], ignore_index=True
-          ).to_parquet(PROCESSED_DATA_DIR / 'pos_pandemia.parquet')
+print('[7/7] Salvando dados de durante a pandemia')
+durante_pandemia = pd.concat([y20, y21], ignore_index=True)
+durante_pandemia[durante_pandemia.cad_dt_notificacao >= PANDEMIC_DAY_ZERO].to_parquet(
+    PROCESSED_DATA_DIR / 'durante_pandemia.parquet', index=False)

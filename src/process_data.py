@@ -309,8 +309,8 @@ y21 = process_y21('INFLUD21-02-08-2021')
 
 print('[6/7] Salvando dados pré-pandemia')
 pd.concat([y09, y10, y11, y12, y13, y14, y15, y16, y17, y18, y19,
-          y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO]]).to_parquet(PROCESSED_DATA_DIR / 'pre_pandemia.parquet')
+          y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO]], ignore_index=True).to_parquet(PROCESSED_DATA_DIR / 'pre_pandemia.parquet')
 
 print('[7/7] Salvando dados pós-pandemia')
-pd.concat([y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO], y21]
+pd.concat([y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO], y21], ignore_index=True
           ).to_parquet(PROCESSED_DATA_DIR / 'pos_pandemia.parquet')

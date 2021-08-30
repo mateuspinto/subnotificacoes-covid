@@ -14,3 +14,4 @@
  - https://opendatasus.saude.gov.br/dataset/bd-srag-2019
  - https://opendatasus.saude.gov.br/dataset/bd-srag-2020
  - https://opendatasus.saude.gov.br/dataset/bd-srag-2021
+ - https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html?edicao=29720&t=o-que-e

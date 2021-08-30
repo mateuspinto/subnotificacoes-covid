@@ -7,7 +7,7 @@ from common.path import *
 from common.data_processing import *
 
 
-def process_y09_12(input_filename, output_filename):
+def process_y09_12(input_filename):
     raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'ID_MUNICIP', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'SIND_DOWN', 'HEPATICA', 'METABOLICA',
                       'NEUROLOGIC', 'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN'])
 
@@ -53,11 +53,10 @@ def process_y09_12(input_filename, output_filename):
     n_way_column_map(processed.evo_ventilacao, raw.SUPORT_VEN, [1, 2], [1, 0])
 
     fill_column(processed.dg_covid, 0)
+    return processed
 
-    processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
-
-def process_y13_18(input_filename, output_filename):
+def process_y13_18(input_filename):
     raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'ID_MUNICIP', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'SIND_DOWN', 'HEPATICA', 'METABOLICA',
                       'NEUROLOGIC', 'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN'])
 
@@ -106,11 +105,10 @@ def process_y13_18(input_filename, output_filename):
                      raw.SUPORT_VEN, [1, 2, 3], [0, 1, 0])
 
     fill_column(processed.dg_covid, 0)
+    return processed
 
-    processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
-
-def process_y19(input_filename, output_filename):
+def process_y19(input_filename):
     raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'CO_MUN_NOT', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'HEMATOLOGI', 'SIND_DOWN', 'HEPATICA', 'ASMA',
                       'DIABETES', 'NEUROLOGIC', 'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VOMITO', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN'])
 
@@ -162,11 +160,10 @@ def process_y19(input_filename, output_filename):
                      raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     fill_column(processed.dg_covid, 0)
+    return processed
 
-    processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
-
-def process_y20(input_filename, output_filename):
+def process_y20(input_filename):
     raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'CO_MUN_NOT', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'HEMATOLOGI', 'SIND_DOWN', 'HEPATICA', 'ASMA', 'DIABETES', 'NEUROLOGIC',
                       'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VOMITO', 'DOR_ABD', 'FADIGA', 'PERD_OLFT', 'PERD_PALA', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN'])
 
@@ -222,11 +219,10 @@ def process_y20(input_filename, output_filename):
                      raw.SUPORT_VEN, [1, 2, 3], [1, 0, 0])
 
     fill_column(processed.dg_covid, 0)
+    return processed
 
-    processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
-
-def process_y21(input_filename, output_filename):
+def process_y21(input_filename):
     raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'DT_NASC', 'DT_NOTIFIC', 'CO_MUN_NOT', 'PUERPERA', 'CARDIOPATI', 'HEMATOLOGI', 'SIND_DOWN', 'HEPATICA', 'ASMA', 'DIABETES', 'NEUROLOGIC', 'PNEUMOPATI',
                       'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VOMITO', 'DOR_ABD', 'FADIGA', 'PERD_OLFT', 'PERD_PALA', 'VACINA_COV', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN', 'CLASSI_FIN'])
 
@@ -283,29 +279,38 @@ def process_y21(input_filename, output_filename):
 
     n_way_column_map(processed.dg_covid, raw.CLASSI_FIN,
                      [1, 2, 3, 4, 5], [0, 0, 0, 0, 1])
+    return processed
 
-    processed.to_parquet(PROCESSED_DATA_DIR / (output_filename + '.parquet'))
 
+PANDEMIC_DAY_ZERO = '2020-02-26'
 
-print('[1/5] Procesando dados de 2009 a 2012')
-process_y09_12('influd09_limpo-final', 'srag_09')
-process_y09_12('influd10_limpo-final', 'srag_10')
-process_y09_12('influd11_limpo_final', 'srag_11')
-process_y09_12('influd12_limpo_final', 'srag_12')
+print('[1/7] Procesando dados de 2009 a 2012')
+y09 = process_y09_12('influd09_limpo-final')
+y10 = process_y09_12('influd10_limpo-final')
+y11 = process_y09_12('influd11_limpo_final')
+y12 = process_y09_12('influd12_limpo_final')
 
-print('[2/5] Procesando dados de 2013 a 2018')
-process_y13_18('influd13_limpo_final', 'srag_13')
-process_y13_18('influd14_limpo-final', 'srag_14')
-process_y13_18('influd15_limpo-final', 'srag_15')
-process_y13_18('influd16_limpo-final', 'srag_16')
-process_y13_18('influd17_limpo-final', 'srag_17')
-process_y13_18('influd18_limpo-final', 'srag_18')
+print('[2/7] Procesando dados de 2013 a 2018')
+y13 = process_y13_18('influd13_limpo_final')
+y14 = process_y13_18('influd14_limpo-final')
+y15 = process_y13_18('influd15_limpo-final')
+y16 = process_y13_18('influd16_limpo-final')
+y17 = process_y13_18('influd17_limpo-final')
+y18 = process_y13_18('influd18_limpo-final')
 
-print('[3/5] Procesando dados de 2019')
-process_y19('influd19_limpo-27.04.2020-final', 'srag_19')
+print('[3/7] Procesando dados de 2019')
+y19 = process_y19('influd19_limpo-27.04.2020-final')
 
-print('[4/5] Procesando dados de 2020')
-process_y20('INFLUD-02-08-2021', 'srag_20')
+print('[4/7] Procesando dados de 2020')
+y20 = process_y20('INFLUD-02-08-2021')
 
-print('[5/5] Procesando dados de 2021')
-process_y21('INFLUD21-02-08-2021', 'srag_21')
+print('[5/7] Procesando dados de 2021')
+y21 = process_y21('INFLUD21-02-08-2021')
+
+print('[6/7] Salvando dados pré-pandemia')
+pd.concat([y09, y10, y11, y12, y13, y14, y15, y16, y17, y18, y19,
+          y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO]]).to_parquet(PROCESSED_DATA_DIR / 'pre_pandemia.parquet')
+
+print('[7/7] Salvando dados pós-pandemia')
+pd.concat([y20[y20.cad_dt_notificacao < PANDEMIC_DAY_ZERO], y21]
+          ).to_parquet(PROCESSED_DATA_DIR / 'pos_pandemia.parquet')

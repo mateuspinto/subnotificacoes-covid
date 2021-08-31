@@ -1,7 +1,6 @@
 # Projeto Introdução à Ciência dos Dados - O Brasil em Dados
 **Tema:** SRAG e COVID-19 no Brasil: uma análise conclusiva de subnotificações de COVID-19 baseada em parâmetros de diagnóstico dos acometidos por SRAG antes e durante o período de pandemia
 
-  
 ## Integrantes do grupo
 - Daniel Fernandes Pinho (EF02634 - Florestal)
 - Mateus Pinto da Silva (EF03489 - Florestal)
@@ -92,10 +91,15 @@ Funções úteis para o processamento/preparação de dados. Utiliza chamadas se
 Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de origem. Necessita de duas listas de valores, sendo a primeira a de valores originais a serem testados e a segunda de novos valores que serão colocados na coluna alvo. Note que as duas listas precisam ter o mesmo tamanho. Caso nenhum valor original case com a coluna de origem, o valor da coluna alvo é mantido. Não suporta colunas com strings.
 
 **unoptimzed_n_way_column_map(target_column, source_column, original_values, new_values):**
+
 **@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;
+
 **@source_column: Coluna do Pandas =** Coluna de origem que será referência para os casamentos;
+
 **@original_values: [Lista] =** Lista de valores a serem testados;
+
 **@new_values: [Lista] =** Respectivos valores da lista anterior a serem colocados na coluna alvo caso o casamento aconteça;
+
 **@retorno =** Nada.
 Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de origem. Necessita de duas listas de valores, sendo a primeira a de valores originais a serem testados e a segunda de novos valores que serão colocados na coluna alvo. Note que as duas listas precisam ter o mesmo tamanho. Caso nenhum valor original case com a coluna de origem, o valor da coluna alvo é mantido. Suporta colunas com strings, porém sacrifica eficiência para tal.
 

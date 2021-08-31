@@ -74,55 +74,50 @@ Para fins de aumento da manutenibilidade, modularidade e reuso, criamos uma simp
 ** **Note que todos os métodos iniciados por __ são privados e inseguros, portanto não foram citados aqui.**
 
 ### common/path.py
-Cria constantes globais úteis para caminho de dados de outros códigos utilizando a biblioteca pathlib que é independente de sistema operacional.
-**WORK_DIR =** Caminho absoluto para a pasta raiz do projeto.
-**RAW_DATA_DIR =** Caminho absoluto para a pasta de dados brutos.
-**PROCESSED_DATA_DIR =** Caminho absoluto para a pasta de dados processados.
+Cria constantes globais úteis para caminho de dados de outros códigos utilizando a biblioteca pathlib que é independente de sistema operacional.\
+**WORK_DIR =** Caminho absoluto para a pasta raiz do projeto.\
+**RAW_DATA_DIR =** Caminho absoluto para a pasta de dados brutos.\
+**PROCESSED_DATA_DIR =** Caminho absoluto para a pasta de dados processados.\
 
 ### common/data_processing.py
 Funções úteis para o processamento/preparação de dados. Utiliza chamadas seguras a métodos inseguros do Numba, estes focados em paralelismo e eficiência.
 
-**n_way_column_map (target_column, source_column, original_values, new_values):**
-**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;
-**@source_column: Coluna do Pandas =** Coluna de origem que será referência para os casamentos;
-**@original_values: [Lista] =** Lista de valores a serem testados;
-**@new_values: [Lista] =** Respectivos valores da lista anterior a serem colocados na coluna alvo caso o casamento aconteça;
+**n_way_column_map (target_column, source_column, original_values, new_values):**\
+**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;\
+**@source_column: Coluna do Pandas =** Coluna de origem que será referência para os casamentos;\
+**@original_values: [Lista] =** Lista de valores a serem testados;\
+**@new_values: [Lista] =** Respectivos valores da lista anterior a serem colocados na coluna alvo caso o casamento aconteça;\
 **@retorno =** Nada.
-Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de origem. Necessita de duas listas de valores, sendo a primeira a de valores originais a serem testados e a segunda de novos valores que serão colocados na coluna alvo. Note que as duas listas precisam ter o mesmo tamanho. Caso nenhum valor original case com a coluna de origem, o valor da coluna alvo é mantido. Não suporta colunas com strings.
-
-**unoptimzed_n_way_column_map(target_column, source_column, original_values, new_values):**
-
-**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;
-
-**@source_column: Coluna do Pandas =** Coluna de origem que será referência para os casamentos;
-
-**@original_values: [Lista] =** Lista de valores a serem testados;
-
+Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de origem. Necessita de duas listas de valores, sendo a primeira a de valores originais a serem testados e a segunda de novos valores que serão colocados na coluna alvo. Note que as duas listas precisam ter o mesmo tamanho. Caso nenhum valor original case com a coluna de origem, o valor da coluna alvo é mantido. Não suporta colunas com strings.\
+**unoptimzed_n_way_column_map(target_column, source_column, original_values, new_values):**\
+**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;\
+**@source_column: Coluna do Pandas =** Coluna de origem que será referência para os casamentos;\
+**@original_values: [Lista] =** Lista de valores a serem testados;\
 **@new_values: [Lista] =** Respectivos valores da lista anterior a serem colocados na coluna alvo caso o casamento aconteça;
 
 **@retorno =** Nada.
 Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de origem. Necessita de duas listas de valores, sendo a primeira a de valores originais a serem testados e a segunda de novos valores que serão colocados na coluna alvo. Note que as duas listas precisam ter o mesmo tamanho. Caso nenhum valor original case com a coluna de origem, o valor da coluna alvo é mantido. Suporta colunas com strings, porém sacrifica eficiência para tal.
 
-**n_way_column_filter(target_column, source_column, filter_func, default_value):**
-**@target_column: Coluna do Pandas =** Coluna alvo onde serão colados os novos valores;
-**@source_column: Coluna do Pandas =** Coluna de origem a qual os valores serão copiados;
-**@filter_func: f(x) =** Função de um argumento que retorna verdadeiro caso o valor deva ser filtrado e falso caso contrário.
-**@default_value: valor =** Valor a ser colocado na coluna alvo caso o filtro retorne verdadeiro;
+**n_way_column_filter(target_column, source_column, filter_func, default_value):**\
+**@target_column: Coluna do Pandas =** Coluna alvo onde serão colados os novos valores;\
+**@source_column: Coluna do Pandas =** Coluna de origem a qual os valores serão copiados;\
+**@filter_func: f(x) =** Função de um argumento que retorna verdadeiro caso o valor deva ser filtrado e falso caso contrário.\
+**@default_value: valor =** Valor a ser colocado na coluna alvo caso o filtro retorne verdadeiro;\
 **@retorno =** Nada.
 Copia os valores de uma coluna para outra, aplicando um filtro durante a cópia. Necessita de uma função que é o filtro em si a ser aplicado elemento por elemento, e um valor a ser colocado caso o filtro seja necessário. Não suporta colunas com strings.
 
-**fill_column(target_column, default_value):**
-**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;
-**@default_value: valor =** Valor a ser colocado em toda a coluna;
+**fill_column(target_column, default_value):**\
+**@target_column: Coluna do Pandas =** Coluna alvo onde serão salvos os novos valores;\
+**@default_value: valor =** Valor a ser colocado em toda a coluna;\
 **@retorno =** Nada.
 Preenche toda a coluna alvo com um único valor.
 
-**filter_dates(source_column):**
-**@source_column: Coluna do Pandas =** Coluna origem de datas em string;
-**@retorno: Coluna do Pandas =** Coluna de datas em datetime.
+**filter_dates(source_column):**\
+**@source_column: Coluna do Pandas =** Coluna origem de datas em string;\
+**@retorno: Coluna do Pandas =** Coluna de datas em datetime.\
 Filtra datas inválidas e transforma datas de string (no padrão brasileiro com dia na frente) para datetime.
 
-**new_blank_dataframe(length):**
-**@length: Inteiro =** Quantidade de linhas do dataframe do Pandas a ser criado.
+**new_blank_dataframe(length):**\
+**@length: Inteiro =** Quantidade de linhas do dataframe do Pandas a ser criado.\
 **@retorno: Dataframe do Pandas =** Dataframe padronizado do trabalho em branco.
 Cria um Dataframe do Pandas em branco, ou seja, preenchido com os valores padrão em todas as linhas e colunas.

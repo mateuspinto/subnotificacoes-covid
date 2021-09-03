@@ -5,6 +5,7 @@
 
 from common.path import *
 from common.data_processing import *
+from zipfile import ZipFile
 
 
 def process_y09_12(input_filename):
@@ -274,15 +275,36 @@ def process_y21(input_filename):
     return processed
 
 
+def process_ibge_polygon():
+    data = pd.read_csv(RAW_DATA_DIR / 'cidades_info_polygon.csv.zip', compression='zip',
+                       usecols=['Código do Município', 'geometry'])
+    data.rename(columns={'geometry': 'Polígono'}, inplace=True)
+    data.to_parquet(PROCESSED_DATA_DIR / 'cidades_ibge_geometria.parquet')
+
+
+def process_ibge_data():
+    zip0 = ZipFile(RAW_DATA_DIR / 'base_de_dados_2002_2009_xls.zip', 'r')
+    zip1 = ZipFile(RAW_DATA_DIR / 'base_de_dados_2010_2018_xls.zip', 'r')
+    data0 = pd.read_excel(
+        zip0.open('PIB dos Municípios - base de dados 2002-2009.xls'))
+    data1 = pd.read_excel(
+        zip1.open('PIB dos Municípios - base de dados 2010-2018.xls'))
+    data_concatenated = pd.concat([data0, data1], ignore_index=True)
+    data_concatenated.to_parquet(
+        PROCESSED_DATA_DIR / 'cidades_ibge_dados.parquet')
+
+
 PANDEMIC_DAY_ZERO = '2020-02-26'
 
-print('[1/7] Processando dados de 2009 a 2012')
+STEPS = 8
+
+print(f'[1/{STEPS}] Processando dados de 2009 a 2012')
 y09 = process_y09_12('influd09_limpo-final')
 y10 = process_y09_12('influd10_limpo-final')
 y11 = process_y09_12('influd11_limpo_final')
 y12 = process_y09_12('influd12_limpo_final')
 
-print('[2/7] Processando dados de 2013 a 2018')
+print(f'[2/{STEPS}] Processando dados de 2013 a 2018')
 y13 = process_y13_18('influd13_limpo_final')
 y14 = process_y13_18('influd14_limpo-final')
 y15 = process_y13_18('influd15_limpo-final')
@@ -290,22 +312,26 @@ y16 = process_y13_18('influd16_limpo-final')
 y17 = process_y13_18('influd17_limpo-final')
 y18 = process_y13_18('influd18_limpo-final')
 
-print('[3/7] Processando dados de 2019')
+print(f'[3/{STEPS}] Processando dados de 2019')
 y19 = process_y19('influd19_limpo-27.04.2020-final')
 
-print('[4/7] Processando dados de 2020')
+print(f'[4/{STEPS}] Processando dados de 2020')
 y20 = process_y20('INFLUD-02-08-2021')
 
-print('[5/7] Processando dados de 2021')
+print(f'[5/{STEPS}] Processando dados de 2021')
 y21 = process_y21('INFLUD21-02-08-2021')
 
-print('[6/7] Salvando dados pré-pandemia')
+print(f'[6/{STEPS}] Salvando dados pré-pandemia')
 pre_pandemia = pd.concat(
     [y09, y10, y11, y12, y13, y14, y15, y16, y17, y18, y19, y20], ignore_index=True)
 pre_pandemia[pre_pandemia.cad_dt_notificacao < PANDEMIC_DAY_ZERO].to_parquet(
     PROCESSED_DATA_DIR / 'pre_pandemia.parquet', index=False)
 
-print('[7/7] Salvando dados de durante a pandemia')
+print(f'[7/{STEPS}] Salvando dados de durante a pandemia')
 durante_pandemia = pd.concat([y20, y21], ignore_index=True)
 durante_pandemia[durante_pandemia.cad_dt_notificacao >= PANDEMIC_DAY_ZERO].to_parquet(
     PROCESSED_DATA_DIR / 'durante_pandemia.parquet', index=False)
+
+print(f'[8/{STEPS}] Salvando dados do IBGE')
+process_ibge_polygon()
+process_ibge_data()

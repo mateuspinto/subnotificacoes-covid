@@ -3,10 +3,9 @@
 # Date: 08/08/2021
 # Download required data using wget
 
-from os import system
 from common.path import *
+import wget
 
-wget = f'wget -P {RAW_DATA_DIR} -nc '
 files = [
     'https://opendatasus.saude.gov.br/dataset/c9a8f286-44bc-444e-94b4-f4ceded3af2c/resource/06a7abd3-412f-47e7-a289-b38f67e9425b/download/influd09_limpo-final.csv',
     'https://opendatasus.saude.gov.br/dataset/c9a8f286-44bc-444e-94b4-f4ceded3af2c/resource/0e9fd20f-dfc1-44e0-8f6e-5bc324c567e6/download/influd10_limpo-final.csv',
@@ -21,7 +20,10 @@ files = [
     'https://opendatasus.saude.gov.br/dataset/e99cfd21-3d8c-4ff9-bd9c-04b8b2518739/resource/9d1165b3-80a3-4ec4-a6ad-e980e3d354b2/download/influd19_limpo-27.04.2020-final.csv',
     'https://s3-sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2020/INFLUD-02-08-2021.csv',
     'https://s3-sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2021/INFLUD21-02-08-2021.csv',
+    'https://ftp.ibge.gov.br/Pib_Municipios/2018/base/base_de_dados_2002_2009_xls.zip',
+    'https://ftp.ibge.gov.br/Pib_Municipios/2018/base/base_de_dados_2010_2018_xls.zip',
 ]
 
-for file in files:
-    system(wget + file)
+for count, file in enumerate(files):
+    print(f'\n[{count+1}/{len(files)}] Baixando arquivos...')
+    wget.download(file, out=str(RAW_DATA_DIR), bar=wget.bar_thermometer)

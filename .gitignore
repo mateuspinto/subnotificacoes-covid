@@ -5,6 +5,11 @@
 # Stored data
 *.csv
 *.parquet
+*.xls
+*.zip
+
+# Temp
+*.tmp
 
 # Pip envs
 venv/*

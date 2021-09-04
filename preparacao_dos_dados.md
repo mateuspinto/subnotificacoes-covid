@@ -17,9 +17,38 @@
 - https://opendatasus.saude.gov.br/dataset/bd-srag-2021
 - https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html?edicao=29720&t=o-que-e
 
+## Como executar:
+
+Note, por favor, que é necessário ter instalado o interpretador do Python 3 com o seu Pip correspondente, além do pacote virtualenv. Ademais, para a correta execução do código, é necessário o arquivo de polígonos das cidades brasileiras, que é um arquivo privado do professor da disciplina.
+
+### No Linux:
+
+Abra o terminal e digite:
+
+    git clone https://github.com/mateuspinto/subnotificacoes-covid.git
+    cd subnotificacoes-covid/
+    virtualenv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python src/download_raw_data.py
+    python src/process_data.py
+
+### No Windows:
+
+Abra o Powershell e digite:
+
+    git clone https://github.com/mateuspinto/subnotificacoes-covid.git
+    cd subnotificacoes-covid/
+    virtualenv venv
+    .\venv\Scripts\activate.ps1
+    pip install -r requirements.txt
+    python src/download_raw_data.py
+    python src/process_data.py
+
+
 ## Mudanças realizadas
 
-Foi adicionada mais uma base de dados: Produto Interno Bruto dos Municípios (IBGE). Ela será utilizada para responder algumas perguntas que correlacionam características de qualidade de vida por município e a evolução do caso.
+Foi adicionada mais uma base de dados: Produto Interno Bruto dos Municípios (IBGE) juntamente com os polígonos das cidades brasileiras cedidas pelo professor da disciplina. Ela será utilizada para responder algumas perguntas que correlacionam características de qualidade de vida por município e a evolução do caso.
 
 ## Objetivo da etapa
 
@@ -27,11 +56,11 @@ Nessa etapa, trataremos todos os dados, escolhendo as colunas a serem utilizadas
 
 ## Decisões de implementação
 
-Como nossos dados apresentavam tamanhos razoáveis (aproximdamente 10 gigabytes quando carregados em memória principal), optamos por utilizar o Numba, compilador JIT para Python que cria funções inseguras porém rápidas com uso de paralelismo a nível de dados. Não achamos necessário utilizar nada para otimizar o consumo de memória, visto que todos os dados já cabiam em memória principal do computador utilizado para o tratamento (que tem 16 gigabytes).
+Como nossos dados apresentavam tamanhos razoáveis (aproximdamente 10 gigabytes quando carregados em memória principal), optamos por utilizar o Numba, compilador JIT para Python que cria funções inseguras porém rápidas com uso de paralelismo a nível de dados. Não achamos necessário utilizar nada para otimizar o consumo de memória, visto que todos os dados já cabiam em memória principal do computador utilizado para o tratamento (que tem 16 gigabytes de memória principal).
 
 ## Dados utilizados nos Dataframes de SRAG
 
-Optamos por definir todas as colunas usadas nos Dataframes de SRAG pré-pandemia e durante a pandemia. Definimos aqui os tipos, e optamos por utilizar float por conter o valor NaN (Not a Number) e date por contem o valor NaT (Not a Date), o que facilita muito a lidar com os dados faltantes.
+Optamos por definir todas as colunas usadas nos Dataframes de SRAG pré-pandemia e durante a pandemia. Definimos aqui os tipos, e optamos por utilizar sempre float e date por conterem os valor NaN (Not a Number) e valor NaT (Not a Date), o que facilita muito a lidar com os dados faltantes.
 
 | Nome da coluna        | Tipo  | Valores possíveis | Valor padrão | Descrição                                              |
 | --------------------- | ----- | ----------------- | ------------ | ------------------------------------------------------ |
@@ -74,11 +103,11 @@ Optamos por definir todas as colunas usadas nos Dataframes de SRAG pré-pandemia
 
 ## Dados utilizados no Dataframe do PIB IBGE
 
-Utilizamos os Dados de PIB de IBGE e dos polígonos das cidades (cedidos pelo professor Fabrício). Utilizamos o mesmo nome de colunas que o próprio IBGE, então não julgamos necessário colocar o dicionário de dados aqui novamente. É possível encontrá-lo na pasta data/raw/dict (além dos dicionários de dados das outras tabelas brutas).
+Utilizamos os Dados de PIB de IBGE e dos polígonos das cidades (cedidos pelo professor da disciplina). Utilizamos o mesmo nome de colunas que o próprio IBGE, então não julgamos necessário colocar o dicionário de dados aqui novamente. É possível encontrá-lo na pasta data/raw/dict (além dos dicionários de dados das outras tabelas brutas).
 
 ## Documentação da biblioteca de código comum
 
-Para fins de aumento da manutenibilidade, modularidade e reuso, criamos uma simples biblioteca de código comum que abstrai algumas das funções utilizadas por nós neste trabalho. Foi pensada inicialmente como uma forma de encapsular os métodos do Numba, compilador JIT para Python que cria funções inseguras porém rápidas. Imaginamos que ela cresça à medida do avanço do trabalho e das eventuais entregas.
+Para fins de aumento da manutenibilidade, modularidade e reuso, criamos uma simples biblioteca de código comum que abstrai algumas das funções utilizadas por nós neste trabalho. Foi pensada inicialmente como uma forma de encapsular os métodos do Numba. Imaginamos que ela cresça à medida do avanço do trabalho e das eventuais entregas.
 
 \*\* **Note que todos os métodos iniciados por \_\_ são privados e inseguros, portanto não foram citados aqui.**
 

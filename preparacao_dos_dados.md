@@ -147,7 +147,7 @@ Preenche condicionalmente a coluna alvo baseando-se nos valores da coluna de ori
 **@source_column: Coluna do Pandas =** Coluna de origem a qual os valores serão copiados;\
 **@filter_func: f(x) =** Função de um argumento que retorna verdadeiro caso o valor deva ser filtrado e falso caso contrário.\
 **@default_value: valor =** Valor a ser colocado na coluna alvo caso o filtro retorne verdadeiro;\
-**@retorno =** Nada.
+**@retorno =** Nada.\
 Copia os valores de uma coluna para outra, aplicando um filtro durante a cópia. Necessita de uma função que é o filtro em si a ser aplicado elemento por elemento, e um valor a ser colocado caso o filtro seja necessário. Não suporta colunas com strings.
 
 **fill_column(target_column, default_value):**\

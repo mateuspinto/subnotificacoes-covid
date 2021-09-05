@@ -120,7 +120,7 @@ Para fins de aumento da manutenibilidade, modularidade e reuso, criamos uma simp
 Cria constantes globais úteis para caminho de dados de outros códigos utilizando a biblioteca pathlib que é independente de sistema operacional.\
 **WORK_DIR =** Caminho absoluto para a pasta raiz do projeto.\
 **RAW_DATA_DIR =** Caminho absoluto para a pasta de dados brutos.\
-**PROCESSED_DATA_DIR =** Caminho absoluto para a pasta de dados processados.\
+**PROCESSED_DATA_DIR =** Caminho absoluto para a pasta de dados processados.
 
 ### common/data_processing.py
 

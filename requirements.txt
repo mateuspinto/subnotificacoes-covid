@@ -1,6 +1,0 @@
-autopep8
-pandas
-numpy
-numba
-fastparquet
-ipykernel

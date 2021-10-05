@@ -15,7 +15,6 @@
 - https://opendatasus.saude.gov.br/dataset/bd-srag-2019
 - https://opendatasus.saude.gov.br/dataset/bd-srag-2020
 - https://opendatasus.saude.gov.br/dataset/bd-srag-2021
-- https://www.ibge.gov.br/estatisticas/economicas/contas-nacionais/9088-produto-interno-bruto-dos-municipios.html?edicao=29720&t=o-que-e
 
 ## Dados processados:
 
@@ -23,7 +22,7 @@
 
 ## Como executar:
 
-Note, por favor, que é necessário ter instalado o interpretador do Python 3 com o seu Pip correspondente, além do pacote virtualenv. Ademais, para a correta execução do código, é necessário o arquivo de polígonos das cidades brasileiras. Ele pode ser baixado pelo link (https://drive.google.com/file/d/1HwHSkT_vdKmdKxoYMXK1f1Y0Dc_nGAg7/view?usp=sharing) e deve ser colocado na pasta data/raw/.
+Note, por favor, que é necessário ter instalado o interpretador do Python 3 com o seu Pip correspondente, além do pacote virtualenv.
 
 ### No Linux:
 

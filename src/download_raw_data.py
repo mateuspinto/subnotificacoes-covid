@@ -25,3 +25,5 @@ files = [
 for count, file in enumerate(files):
     print(f'\n[{count+1}/{len(files)}] Baixando arquivos...')
     wget.download(file, out=str(RAW_DATA_DIR), bar=wget.bar_thermometer)
+
+print()

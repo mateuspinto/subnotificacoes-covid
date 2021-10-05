@@ -4,6 +4,20 @@ import pandas as pd
 
 
 @jit(nopython=True, cache=True)
+def __func_column_map(target, source, f):
+    for i in prange(target.shape[0]):
+        target[i] = f(source[i])
+
+
+def func_column_map(target_column, source_column, map_func):
+    target = target_column.to_numpy()
+    source = source_column.to_numpy()
+    f = jit(map_func, nopython=True, cache=False)
+
+    __func_column_map(target, source, f)
+
+
+@jit(nopython=True, cache=True)
 def __n_way_column_map(target, source, xs, ys):
     for i in prange(target.shape[0]):
         for j in range(xs.shape[0]):
@@ -68,12 +82,12 @@ def filter_dates(source_column):
 def new_blank_dataframe(length):
     df = pd.DataFrame()
 
-    df['cad_dt_nascimento'] = np.full(length, np.datetime64(
-        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
-    df['cad_dt_notificacao'] = np.full(length, np.datetime64(
-        'Nat', 'ns'), np.datetime64('Nat', 'ns'))
+    df['cad_dt_nascimento'] = np.full(length, np.datetime64('Nat', 'ns'), np.datetime64('Nat', 'ns'))
+    df['cad_dt_notificacao'] = np.full(length, np.datetime64('Nat', 'ns'), np.datetime64('Nat', 'ns'))
 
     df['cad_cod_cidade'] = np.full(length, np.nan, float)
+    df['cad_cod_uf'] = np.full(length, np.nan, float)
+    df['cad_uf'] = np.full(length, np.nan, float)
     df['cad_sexo'] = np.full(length, np.nan, float)
 
     df['fr_asma'] = np.full(length, np.nan, float)

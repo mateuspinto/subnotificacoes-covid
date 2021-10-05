@@ -19,9 +19,7 @@ files = [
     'https://opendatasus.saude.gov.br/dataset/e6b03178-551c-495c-9935-adaab4b2f966/resource/a7b19adf-c6e6-4349-a309-7a1ec0f016a4/download/influd18_limpo-final.csv',
     'https://opendatasus.saude.gov.br/dataset/e99cfd21-3d8c-4ff9-bd9c-04b8b2518739/resource/9d1165b3-80a3-4ec4-a6ad-e980e3d354b2/download/influd19_limpo-27.04.2020-final.csv',
     'https://s3-sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2020/INFLUD-02-08-2021.csv',
-    'https://s3-sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2021/INFLUD21-02-08-2021.csv',
-    'https://ftp.ibge.gov.br/Pib_Municipios/2018/base/base_de_dados_2002_2009_xls.zip',
-    'https://ftp.ibge.gov.br/Pib_Municipios/2018/base/base_de_dados_2010_2018_xls.zip',
+    'https://s3-sa-east-1.amazonaws.com/ckan.saude.gov.br/SRAG/2021/INFLUD21-02-08-2021.csv'
 ]
 
 for count, file in enumerate(files):

@@ -4,4 +4,3 @@ numpy
 numba
 fastparquet
 ipykernel
-xlrd

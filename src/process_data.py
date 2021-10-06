@@ -140,7 +140,7 @@ def process_y19(input_filename):
 
 
 def process_y20(input_filename):
-    raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'CO_MUN_NOT', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'HEMATOLOGI', 'SIND_DOWN', 'HEPATICA', 'ASMA', 'DIABETES', 'NEUROLOGIC', 'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VOMITO', 'DOR_ABD', 'FADIGA', 'PERD_OLFT', 'PERD_PALA', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN'])
+    raw = pd.read_csv(RAW_DATA_DIR / (input_filename + '.csv'), delimiter=';', encoding='iso-8859-1', usecols=['CS_SEXO', 'CO_MUN_NOT', 'DT_NASC', 'DT_NOTIFIC', 'PUERPERA', 'CARDIOPATI', 'HEMATOLOGI', 'SIND_DOWN', 'HEPATICA', 'ASMA', 'DIABETES', 'NEUROLOGIC', 'PNEUMOPATI', 'IMUNODEPRE', 'RENAL', 'OBESIDADE', 'FEBRE', 'TOSSE', 'GARGANTA', 'DISPNEIA', 'DESC_RESP', 'SATURACAO', 'DIARREIA', 'VOMITO', 'DOR_ABD', 'FADIGA', 'PERD_OLFT', 'PERD_PALA', 'VACINA', 'HOSPITAL', 'UTI', 'EVOLUCAO', 'CS_GESTANT', 'SUPORT_VEN', 'CLASSI_FIN'])
 
     processed = new_blank_dataframe(len(raw))
 
@@ -185,7 +185,7 @@ def process_y20(input_filename):
     n_way_column_map(processed.evo_uti, raw.UTI, [1, 2], [1, 0])
     n_way_column_map(processed.evo_ventilacao, raw.SUPORT_VEN, [1, 2, 3], [1, 1, 0])
 
-    fill_column(processed.dg_covid, 0)
+    n_way_column_map(processed.dg_covid, raw.CLASSI_FIN, [1, 2, 3, 4, 5], [0, 0, 0, 0, 1])
     return processed
 
 

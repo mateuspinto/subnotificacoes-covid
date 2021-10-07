@@ -87,6 +87,7 @@ def new_blank_dataframe(length):
 
     df['cad_cod_cidade'] = np.full(length, np.nan, float)
     df['cad_cod_uf'] = np.full(length, np.nan, float)
+    df['cad_idade'] = np.full(length, np.nan, float)
     df['cad_uf'] = np.full(length, np.nan, float)
     df['cad_sexo'] = np.full(length, np.nan, float)
 

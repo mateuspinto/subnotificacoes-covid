@@ -273,6 +273,8 @@ func_column_map(casos.cad_cod_uf, casos.cad_cod_cidade, lambda x: x // 10000)
 casos['cad_cod_uf'] = casos['cad_cod_uf'].apply(int)
 casos['cad_uf'] = casos['cad_cod_uf'].astype('category').cat.rename_categories({11: 'Rondônia', 12: 'Acre', 13: 'Amazonas', 14: 'Roraima', 15: 'Pará', 16: 'Amapá', 17: 'Tocantins', 21: 'Maranhão', 22: 'Piauí', 23: 'Ceará', 24: 'Rio Grande do Norte', 25: 'Paraíba', 26: 'Pernambuco', 27: 'Alagoas', 28: 'Sergipe', 29: 'Bahia', 31: 'Minas Gerais', 32: 'Espírito Santo', 33: 'Rio de Janeiro', 35: 'São Paulo', 41: 'Paraná', 42: 'Santa Catarina', 43: 'Rio Grande do Sul', 50: 'Mato Grosso do Sul', 51: 'Mato Grosso', 52: 'Goiás', 53: 'Distrito Federal'})
 casos.drop(columns=['cad_cod_cidade', 'cad_cod_uf'], inplace=True)
+casos.dropna(subset=['cad_dt_nascimento', 'cad_dt_notificacao', 'dg_covid'], inplace=True)
+casos['cad-idade'] = (casos.cad_dt_notificacao - casos.cad_dt_nascimento).astype("timedelta64[Y]")
 
 print(f'[7/{STEPS}] Salvando casos')
 casos.to_parquet(PROCESSED_DATA_DIR / 'casos.parquet', index=False)

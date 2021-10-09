@@ -15,7 +15,7 @@ def process_y09_12(input_filename):
     processed.cad_dt_nascimento = filter_dates(raw.DT_NASC)
     processed.cad_dt_notificacao = filter_dates(raw.DT_NOTIFIC)
 
-    unoptimzed_n_way_column_map(processed.cad_sexo, raw.CS_SEXO, ['F', 'M'], [1, 0])
+    unoptimzed_n_way_column_map(processed.cad_sexo_feminino, raw.CS_SEXO, ['F', 'M'], [1, 0])
     n_way_column_filter(processed.cad_cod_cidade, raw.ID_MUNICIP, lambda x: x < 100000 or x > 999999, np.nan)
 
     n_way_column_map(processed.fr_cardiopatia, raw.CARDIOPATI, [1, 2], [1, 0])
@@ -58,7 +58,7 @@ def process_y13_18(input_filename):
     processed.cad_dt_nascimento = filter_dates(raw.DT_NASC)
     processed.cad_dt_notificacao = filter_dates(raw.DT_NOTIFIC)
 
-    unoptimzed_n_way_column_map(processed.cad_sexo, raw.CS_SEXO, ['F', 'M'], [1, 0])
+    unoptimzed_n_way_column_map(processed.cad_sexo_feminino, raw.CS_SEXO, ['F', 'M'], [1, 0])
     n_way_column_filter(processed.cad_cod_cidade, raw.ID_MUNICIP, lambda x: x < 100000 or x > 999999, np.nan)
 
     n_way_column_map(processed.fr_cardiopatia, raw.CARDIOPATI, [1, 2], [1, 0])
@@ -101,7 +101,7 @@ def process_y19(input_filename):
     processed.cad_dt_nascimento = filter_dates(raw.DT_NASC)
     processed.cad_dt_notificacao = filter_dates(raw.DT_NOTIFIC)
 
-    unoptimzed_n_way_column_map(processed.cad_sexo, raw.CS_SEXO, ['F', 'M'], [1, 0])
+    unoptimzed_n_way_column_map(processed.cad_sexo_feminino, raw.CS_SEXO, ['F', 'M'], [1, 0])
     n_way_column_filter(processed.cad_cod_cidade, raw.CO_MUN_NOT, lambda x: x < 100000 or x > 999999, np.nan)
 
     n_way_column_map(processed.fr_asma, raw.ASMA, [1, 2], [1, 0])
@@ -147,7 +147,7 @@ def process_y20(input_filename):
     processed.cad_dt_nascimento = filter_dates(raw.DT_NASC)
     processed.cad_dt_notificacao = filter_dates(raw.DT_NOTIFIC)
 
-    unoptimzed_n_way_column_map(processed.cad_sexo, raw.CS_SEXO, ['F', 'M'], [1, 0])
+    unoptimzed_n_way_column_map(processed.cad_sexo_feminino, raw.CS_SEXO, ['F', 'M'], [1, 0])
     n_way_column_filter(processed.cad_cod_cidade, raw.CO_MUN_NOT, lambda x: x < 100000 or x > 999999, np.nan)
 
     n_way_column_map(processed.fr_asma, raw.ASMA, [1, 2], [1, 0])
@@ -197,7 +197,7 @@ def process_y21(input_filename):
     processed.cad_dt_nascimento = filter_dates(raw.DT_NASC)
     processed.cad_dt_notificacao = filter_dates(raw.DT_NOTIFIC)
 
-    unoptimzed_n_way_column_map(processed.cad_sexo, raw.CS_SEXO, ['F', 'M'], [1, 0])
+    unoptimzed_n_way_column_map(processed.cad_sexo_feminino, raw.CS_SEXO, ['F', 'M'], [1, 0])
     n_way_column_filter(processed.cad_cod_cidade, raw.CO_MUN_NOT, lambda x: x < 100000 or x > 999999, np.nan)
 
     n_way_column_map(processed.fr_asma, raw.ASMA, [1, 2], [1, 0])

@@ -89,7 +89,7 @@ def new_blank_dataframe(length):
     df['cad_cod_uf'] = np.full(length, np.nan, float)
     df['cad_idade'] = np.full(length, np.nan, float)
     df['cad_uf'] = np.full(length, np.nan, float)
-    df['cad_sexo'] = np.full(length, np.nan, float)
+    df['cad_sexo_feminino'] = np.full(length, np.nan, float)
 
     df['fr_asma'] = np.full(length, np.nan, float)
     df['fr_cardiopatia'] = np.full(length, np.nan, float)

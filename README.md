@@ -1,6 +1,6 @@
 # Projeto Introdução à Ciência dos Dados - O Brasil em Dados
 
-**Tema:** SRAG e COVID-19 no Brasil: uma análise conclusiva de subnotificações de COVID-19 baseada em parâmetros de diagnóstico dos acometidos por SRAG antes e durante a pandemia
+**Tema:** Análise conclusiva de subnotificações de SRAG provocada por Covid-19 no Brasil
 
 ## Integrantes do grupo:
 
@@ -18,7 +18,7 @@
 
 ## Dados processados:
 
-É possível baixar os dados processados compactados pelo link (https://drive.google.com/file/d/1LpwsCS-O2fy7L9TdKi3kIfOoVQDeFxvX/view?usp=sharing). Eles devem ser descompactados e colocados na pasta data/processed/ para correto funcionamento do projeto.
+É possível baixar os dados processados compactados pelo link (https://drive.google.com/file/d/1knTUgLZHLQcBF9CmCdHWk-WP94AXh2_J/view?usp=sharing). Eles devem ser descompactados e colocados na pasta data/processed/ para correto funcionamento do projeto.
 
 ## Como executar:
 
@@ -36,6 +36,8 @@ Abra o terminal e digite:
     python src/download_raw_data.py
     python src/process_data.py
 
+Em seguida, execute o Notebook de sua escolha :#
+
 ### No Windows:
 
 Abra o Powershell e digite:
@@ -47,3 +49,5 @@ Abra o Powershell e digite:
     pip install -r requirements.txt
     python src/download_raw_data.py
     python src/process_data.py
+
+Em seguida, execute o Notebook de sua escolha :#

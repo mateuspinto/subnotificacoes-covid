@@ -1,5 +1,5 @@
 # Projeto Introdução à Ciência dos Dados - O Brasil em Dados 
-**Tema:** # Análise conclusiva de subnotificações de SRAG provocada por Covid-19 no Brasil
+**Tema:** Análise conclusiva de subnotificações de SRAG provocada por Covid-19 no Brasil
 
 ## Integrantes do grupo
  - Daniel Fernandes Pinho (EF02634 - Florestal)

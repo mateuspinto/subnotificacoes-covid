@@ -51,3 +51,7 @@ Abra o Powershell e digite:
     python src/process_data.py
 
 Em seguida, execute o Notebook de sua escolha :#
+
+## Video apresentacao
+
+https://drive.google.com/file/d/1iW2-0zyjtb1Va4jXAyVILVjDwAkr_MrA/view?usp=sharing

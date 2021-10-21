@@ -166,3 +166,6 @@ Filtra datas inválidas e transforma datas de string (no padrão brasileiro com 
 **@length: Inteiro =** Quantidade de linhas do dataframe do Pandas a ser criado.\
 **@retorno: Dataframe do Pandas =** Dataframe padronizado do trabalho em branco.\
 Cria um Dataframe do Pandas em branco, ou seja, preenchido com os valores padrão em todas as linhas e colunas.
+
+## Video apresentacao
+https://drive.google.com/file/d/1iW2-0zyjtb1Va4jXAyVILVjDwAkr_MrA/view?usp=sharing

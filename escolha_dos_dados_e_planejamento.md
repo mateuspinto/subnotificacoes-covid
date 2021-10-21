@@ -43,3 +43,5 @@
 2. Repetir as perguntas 3.1, 3.2, 3.3, 4, 5 e 6; comparando os pacientes semi vacinados com cada vacina e os não vacinados.
 3. Repetir as perguntas 3.1, 3.2, 3.3, 4, 5 e 6; comparando pacientes tratados por cloroquina, azitromicina, ivermectina, dexametasona, prednisona, e/ou annita com os outros pacientes não tratados por esses medicamentos.
 
+## Video apresentacao
+https://drive.google.com/file/d/1iW2-0zyjtb1Va4jXAyVILVjDwAkr_MrA/view?usp=sharing

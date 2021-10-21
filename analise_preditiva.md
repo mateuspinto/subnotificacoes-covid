@@ -14,4 +14,7 @@
 - https://opendatasus.saude.gov.br/dataset/bd-srag-2021
 
 ## Onde está o relatório?
-Caro professor/monitor da disciplina, note que o relatório Jupyter Notebook desta entrega **(4. Análise preditiva)** está em **src/predction.ipynb**. Colocamo-no nesta posição a fim de manter o padrão dos arquivos do repositório, e poder trabalhar com as importações do Python de maneira simplificada. Todas as decisões de implementação, explicações de cada código estão neste mesmo arquivo. 
+Caro professor/monitor da disciplina, note que o relatório Jupyter Notebook desta entrega **(4. Análise preditiva)** está em **src/predction.ipynb**. Colocamo-no nesta posição a fim de manter o padrão dos arquivos do repositório, e poder trabalhar com as importações do Python de maneira simplificada. Todas as decisões de implementação, explicações de cada código estão neste mesmo arquivo.
+
+## Video apresentacao
+https://drive.google.com/file/d/1iW2-0zyjtb1Va4jXAyVILVjDwAkr_MrA/view?usp=sharing

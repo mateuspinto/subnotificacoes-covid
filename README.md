@@ -1,6 +1,7 @@
 # Projeto Introdução à Ciência dos Dados - O Brasil em Dados
 
-**Tema:** Análise conclusiva de subnotificações de SRAG provocada por Covid-19 no Brasil
+**Tema:** Análise conclusiva de subnotificações de SRAG provocada por Covid-19
+no Brasil
 
 ## Integrantes do grupo:
 
@@ -18,11 +19,15 @@
 
 ## Dados processados:
 
-É possível baixar os dados processados compactados pelo link (https://drive.google.com/file/d/1knTUgLZHLQcBF9CmCdHWk-WP94AXh2_J/view?usp=sharing). Eles devem ser descompactados e colocados na pasta data/processed/ para correto funcionamento do projeto.
+É possível baixar os dados processados compactados pelo link
+(https://drive.google.com/file/d/1knTUgLZHLQcBF9CmCdHWk-WP94AXh2_J/view?usp=sharing).
+Eles devem ser descompactados e colocados na pasta data/processed/ para correto
+funcionamento do projeto.
 
 ## Como executar:
 
-Note, por favor, que é necessário ter instalado o interpretador do Python 3 com o seu Pip correspondente, além do pacote virtualenv.
+Note, por favor, que é necessário ter instalado o interpretador do Python 3 com
+o seu Pip correspondente, além do pacote virtualenv.
 
 ### No Linux:
 
@@ -55,3 +60,7 @@ Em seguida, execute o Notebook de sua escolha :#
 ## Video apresentacao
 
 https://drive.google.com/file/d/1iW2-0zyjtb1Va4jXAyVILVjDwAkr_MrA/view?usp=sharing
+
+## Relatorio final completo em PDF
+
+Raiz do projeto, arquivo relatorio_final.pdf
